@@ -27,12 +27,7 @@ router.get('/transactions', (_req: Request, res: Response) => {
   res.json({ data });
 });
 
-router.get('/transactions/:id', (req: Request, res: Response) => {
-  const result = transactionService.getById(req.params.id);
-  if (isApiError(result)) return res.status(result.statusCode).json(result);
-  res.json({ data: result });
-});
-
+// NOTE: specific routes must come BEFORE parameterised routes (:id)
 router.get('/transactions/monthly-total', (req: Request, res: Response) => {
   const year  = parseInt(req.query.year  as string, 10);
   const month = parseInt(req.query.month as string, 10);
@@ -42,6 +37,12 @@ router.get('/transactions/monthly-total', (req: Request, res: Response) => {
   }
 
   const result = transactionService.getMonthlyTotal(year, month);
+  if (isApiError(result)) return res.status(result.statusCode).json(result);
+  res.json({ data: result });
+});
+
+router.get('/transactions/:id', (req: Request, res: Response) => {
+  const result = transactionService.getById(req.params.id);
   if (isApiError(result)) return res.status(result.statusCode).json(result);
   res.json({ data: result });
 });

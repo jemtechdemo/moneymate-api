@@ -89,7 +89,7 @@ describe('TransactionService', () => {
 
   test('getMonthlyTotal returns error for invalid month', () => {
     const result = service.getMonthlyTotal(2025, 13);
-    expect(result).toMatchObject({ code: 'VALIDATION_ERROR' });
+    expect(result).toMatchObject({ code: 'INVALID_MONTH' });
   });
 
   test('getMonthlyTotal calculates income correctly', () => {

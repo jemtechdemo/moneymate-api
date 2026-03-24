@@ -49,13 +49,8 @@ export class TransactionRepository implements ITransactionRepository {
     const lastDay = new Date(year, month, 0).getDate();
     const endDate = `${year}-${paddedMonth}-${String(lastDay).padStart(2, '0')}`;
 
-    // ============================================================
-    // BUG (MM-4): Off-by-one error on end date boundary.
-    // The strict less-than operator ( < ) excludes transactions
-    // that fall exactly on the last day of the month.
-    // Fix: change the second condition from  < endDate  to  <= endDate
-    // ============================================================
-    return store.transactions.filter(t => t.date >= startDate && t.date < endDate);
+    // MM-4: use <= to include transactions on the last day of the month
+    return store.transactions.filter(t => t.date >= startDate && t.date <= endDate);
   }
 
   create(input: CreateTransactionInput): Transaction {

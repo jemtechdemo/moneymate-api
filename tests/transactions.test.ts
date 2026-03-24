@@ -2,7 +2,7 @@
 // MoneyMate API — Transaction Tests
 // ============================================================
 // NOTE: The boundary date tests (marked with BUG) will FAIL
-// until MM-42 is fixed. This is intentional for the demo.
+// until MM-4 is fixed. This is intentional for the demo.
 // ============================================================
 
 import { TransactionRepository, TransactionService } from '../src/transactions';
@@ -67,10 +67,10 @@ describe('TransactionRepository', () => {
   });
 
   // ============================================================
-  // BUG MM-42: These tests FAIL before the fix is applied.
+  // BUG MM-4: These tests FAIL before the fix is applied.
   // The off-by-one error means last-day transactions are excluded.
   // ============================================================
-  test('BUG MM-42: findByMonth includes transactions on the last day of the month', () => {
+  test('BUG MM-4: findByMonth includes transactions on the last day of the month', () => {
     const results = repo.findByMonth(2025, 1);
     const ids = results.map(t => t.id);
     // txn-004 and txn-005 are dated 2025-01-31 — they must be included
@@ -78,7 +78,7 @@ describe('TransactionRepository', () => {
     expect(ids).toContain('txn-005'); // FAILS before fix
   });
 
-  test('BUG MM-42: findByMonth returns all 5 January transactions', () => {
+  test('BUG MM-4: findByMonth returns all 5 January transactions', () => {
     const results = repo.findByMonth(2025, 1);
     expect(results).toHaveLength(5); // Returns 3 before fix
   });
@@ -99,11 +99,11 @@ describe('TransactionService', () => {
   });
 
   // ============================================================
-  // BUG MM-42: Expense total is wrong before the fix.
+  // BUG MM-4: Expense total is wrong before the fix.
   // Correct total: 45.50 + 32.00 + 89.99 + 28.00 = 195.49
   // Buggy total:   45.50 + 32.00               = 77.50
   // ============================================================
-  test('BUG MM-42: getMonthlyTotal includes last-day expenses in total', () => {
+  test('BUG MM-4: getMonthlyTotal includes last-day expenses in total', () => {
     const result = service.getMonthlyTotal(2025, 1);
     if ('statusCode' in result) throw new Error('Expected MonthlyTotalResult');
     expect(result.totalExpenses).toBeCloseTo(195.49, 2); // FAILS before fix

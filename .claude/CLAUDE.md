@@ -52,9 +52,9 @@ tests/
 ## Git conventions
 - **Branch naming:** `feature/MM-{jira-id}-short-description` or `fix/MM-{jira-id}-short-description`
 - **Commit messages:** `MM-{jira-id}: {imperative verb} {what changed}`
-  - Example: `MM-42: fix off-by-one error in monthly transaction filter`
+  - Example: `MM-4: fix off-by-one error in monthly transaction filter`
 - **Never push directly to `main`** — always open a pull request
-- **PR titles** must reference the Jira ticket: `MM-42: Fix monthly total boundary date bug`
+- **PR titles** must reference the Jira ticket: `MM-4: Fix monthly total boundary date bug`
 - PR description must include: what changed, why, and how to test
 
 ---

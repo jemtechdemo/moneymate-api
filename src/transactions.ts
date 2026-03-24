@@ -50,7 +50,7 @@ export class TransactionRepository implements ITransactionRepository {
     const endDate = `${year}-${paddedMonth}-${String(lastDay).padStart(2, '0')}`;
 
     // ============================================================
-    // BUG (MM-42): Off-by-one error on end date boundary.
+    // BUG (MM-4): Off-by-one error on end date boundary.
     // The strict less-than operator ( < ) excludes transactions
     // that fall exactly on the last day of the month.
     // Fix: change the second condition from  < endDate  to  <= endDate

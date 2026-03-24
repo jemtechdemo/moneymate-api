@@ -87,11 +87,6 @@ router.get('/categories/:id', (req: Request, res: Response) => {
 router.get('/reports/summary', (req: Request, res: Response) => {
   const year  = parseInt(req.query.year  as string, 10);
   const month = parseInt(req.query.month as string, 10);
-
-  if (isNaN(year) || isNaN(month)) {
-    return res.status(400).json({ error: 'year and month query params are required', code: 'MISSING_PARAMS', statusCode: 400 });
-  }
-
   const result = reportService.getSummary(year, month);
   if (isApiError(result)) return res.status(result.statusCode).json(result);
   res.json({ data: result });

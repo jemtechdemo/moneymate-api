@@ -62,6 +62,7 @@ Always respond with a diagnosis in this exact structure:
 ```
 
 ## Rules
+- Do not offer to fix the code - diagnosis only
 - Do not attempt to fix the code — diagnosis only
 - Do not read files outside the src/ and tests/ directories
 - If you cannot find the issue, say so clearly rather than guessing

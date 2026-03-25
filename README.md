@@ -74,4 +74,4 @@ claude
 ## Known issues
 
 - **MM-4** — `GET /transactions/monthly-total` excludes transactions on the last day of the month
-- **MM-50** — `GET /reports/summary` not yet implemented
+- **MM-5** — `GET /reports/summary` not yet implemented

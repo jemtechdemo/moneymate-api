@@ -34,7 +34,7 @@ npm run build    # compile to dist/
 | POST | `/api/budgets` | Create a budget |
 | GET | `/api/categories` | List all categories |
 | GET | `/api/categories/:id` | Get category by ID |
-| GET | `/api/reports/summary?year=&month=` | Monthly spending summary *(stub — MM-50)* |
+| GET | `/api/reports/summary?year=&month=` | Monthly spending summary *(stub — MM-5)* |
 
 ## Project structure
 
